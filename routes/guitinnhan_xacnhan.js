@@ -8,9 +8,6 @@ var fs = require('fs')
 
 require('dotenv').config()
 
-
-
-
 // var guiTinNhan= async function(sdt,maxacnhan){
 //   //var deferred = Q.defer();
   

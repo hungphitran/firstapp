@@ -1,4 +1,5 @@
 (function(){
+
 	//search module
 	var module = angular.module('BlogAdminModule',
 	 ['ngMaterial','ngRoute','ngTable','textAngular','angularFileUpload']);

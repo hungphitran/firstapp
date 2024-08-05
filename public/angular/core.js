@@ -644,6 +644,7 @@
 	    	}
 	    }
 	    service.filter_dichvu = function(sotruongs, data){
+			if(!sotruongs) return false;
 	    	for(i=0; i<sotruongs.length; i++){
 	    		var index = data.mang_tieuchi.indexOf(sotruongs[i]);
 				if (index !== -1) {
@@ -1039,7 +1040,7 @@
 		    // return deferred.promise;
 
 			try{
-				const response=$http.post('http://localhost:3000/xacthuc',thongtinkh)
+				const response=$http.post(`http://localhost/xacthuc`,thongtinkh)
 				console.log('xac nhan tra ve: ',response)
 				return response;
 			}

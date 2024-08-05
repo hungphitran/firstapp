@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var request = require("request");
 var xacnhan = require('../models/tinnhan.js') ;
-const { promise } = require('q');
 
 router.post('/',function(req,res){
   
