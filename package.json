@@ -28,6 +28,7 @@
     "q": "^2.0.3",
     "request": "^2.88.2",
     "serve-favicon": "^2.5.0",
+    "transformers": "^3.1.0",
     "twilio": "^5.2.2",
     "uglify-js": "^3.19.1"
   },
