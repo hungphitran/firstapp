@@ -15,7 +15,7 @@
 	});
 	module.factory('doitacFactory', function($http, $q){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 		service.layDoiTac = async function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/doitac', { cache: false})
@@ -37,7 +37,7 @@
 	})
 	module.factory('ngvFactory', function($http, $q){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 		service.layDanhSachNgvAll = async function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/nguoigiupviec?sort=hoten', { cache: false})
@@ -262,7 +262,7 @@
 	});
 	module.factory('filterFactory', function($location, $mdDialog, $q, $http){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 
 		var _kinhnghiems = [
 	    	{
@@ -666,7 +666,7 @@
 	});
 	module.factory('thanhtoanFactory', function($http, $q){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 		//lưu khách hàng
 		service.timKhachHang = function(sdt){
 			// var deferred = $q.defer();
@@ -844,7 +844,7 @@
 	});
 	module.factory('khachhangFactory', function($http, $q){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 		var _khachhang = {
 			hoten: null,
 			sdt: null,
@@ -1411,7 +1411,7 @@
 	    	var q_ngv_trunglich = '?ngaylam=' + $scope.doi_ngaysearch($scope.data.ngay) +
 				'&giobatdau__lte=' + $scope.data.giokt1 +
 				'&gioketthuc__gte=' + $scope.data.giobd1;
-			$http.get('http://localhost:4444/api/lichlamviec'+q_ngv_trunglich, { cache: false})
+			$http.get('https://webapi-9lho.onrender.com/api/lichlamviec'+q_ngv_trunglich, { cache: false})
 		        .then(function(data) {
 		        	if(data.length > 0){
 			            for(i=0; i<data.length; i++){
@@ -1431,7 +1431,7 @@
 			        		}
 			            }
 		        	}
-		            $http.get('http://localhost:4444/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
+		            $http.get('https://webapi-9lho.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
 				        .then(function(data) {
 				        	var trangthaiyc = thanhtoanFactory.getTrangThaiYeuCau($scope.tieuchis);
 				        	var mangdichvu = layDanhSachDichVu();
@@ -2320,7 +2320,7 @@
 			    	);
 	    		}
 	    		else{
-	    			$http.get('http://localhost:4444/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
+	    			$http.get('https://webapi-9lho.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
 				        .then(function(data) {
 
 				        	var trangthaiyc = thanhtoanFactory.getTrangThaiYeuCau($scope.tieuchis);
@@ -3731,7 +3731,7 @@
 	    }
 	    var luu_yeucau_b2 = function(){
 	    	$scope.loading_yeucau = true;
-            $http.get('http://localhost:4444/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
+            $http.get('https://webapi-9lho.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
 		        .then(function(data) {
 		        	var trangthaiyc = thanhtoanFactory.getTrangThaiYeuCau($scope.tieuchis);
 		        	var mangdichvu = layDanhSachDichVu();

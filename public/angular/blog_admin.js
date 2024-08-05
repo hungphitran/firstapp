@@ -42,7 +42,7 @@
 	});
 	module.factory('blogFactory', function($http, $q){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 		service.getBlogs = async function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blog', { cache: false})
@@ -201,7 +201,7 @@
 	})
 	module.factory('blogImgFactory', function($http, $q){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 		service.getBlogImgs = async function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blogimg', { cache: false})
@@ -254,7 +254,7 @@
 	})
 	module.factory('partnerFactory', function($http, $q){
 		var service = {};
-		var api_url = 'http://localhost:4444/api';
+		var api_url = 'https://webapi-9lho.onrender.com/api';
 		service.getPartners =async function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/doitac', { cache: false})
