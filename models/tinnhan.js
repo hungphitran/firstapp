@@ -19,27 +19,26 @@ function luuXacNhan(sdtkhachhang, callback){
     xacnhan.maxacnhan = taoMaXacNhan();
     xacnhan.sdtkhachhang = sdtkhachhang;
     console.log('tin nhan luu : ', sdtkhachhang)
-    xacnhan.save(function(err){
-        console.log('luu xac nhan loi ne: ',err) 
+    xacnhan.save()
+    .then(function(err){
         if(err){
-            console.log('e1')
             callback(err);
         }else{
-            console.log('e2')
             callback(null, xacnhan);
         }
     })
+    .catch(err=>console.error(err))
 }
 function timXacNhan(sdtkhachhang, callback){
     console.log(sdtkhachhang)
     var query = tinnhanDB.findOne({'sdtkhachhang':sdtkhachhang});
-    query.exec(function(err, xacnhan){
-        if(err){
-            callback(err);
-        }else{
-            callback(null, xacnhan);
-        }
+    query.exec()
+    .then(function(xacnhan){
+        callback(null, xacnhan);
     })
+    .catch(function(err){
+        callback(err);
+    });
 }
 function xoaXacNhan(sdtkhachhang){
     var query = tinnhanDB.findOne({'sdtkhachhang':sdtkhachhang}).deleteOne();

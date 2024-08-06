@@ -8,7 +8,6 @@ router.post('/',function(req,res){
   
   //var maxacnhan = null;
   xacnhan.timXacNhan(req.body.sdt, function(err, xacnhan_callback){
-    //console.log('xacnhancallback: ',xacnhan_callback)
     if(err) throw err;
     else {
       console.log(err, xacnhan_callback)

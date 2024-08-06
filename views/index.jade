@@ -231,23 +231,23 @@ html(lang='en')
                       .form-group
                           select.form-control.sb.fixwquan.nya-selectpicker(ng-model="data.quan" data-size="7")
                             option(value='', disabled) Chọn Quận
-                            option(ng-repeat="quan in data.danhsachquan" value="{{quan}}"){{quan}}
+                            option(ng-repeat="quan in data.danhsachquan" value="{{quan}}") {{quan}}
                           input#quannh.form-control.sb.typeahead(type='hidden', name='quan', value='{{data.quan}}')
 
                           select.form-control.sb.fixwdichvu.nya-selectpicker(ng-model="data.dichvu" multiple data-size="7")
-                            option(ng-repeat="dichvu in data.danhsachdichvu" value="{{dichvu}}"){{dichvu}}
+                            option(ng-repeat="dichvu in data.danhsachdichvu" value="{{dichvu}}") {{dichvu}}
                           input#dichvunh.form-control.sb.typeahead(type='hidden', name='dichvu', value='{{data.dichvu}}')
 
                           input.form-control.sb.dpindex.fixWTimeNH(type='text', name='ngay', placeholder='Chọn ngày', readonly='readonly', autocomplete='off')
                       .form-group
                           select.form-control.sb.fixWTime.nya-selectpicker(ng-model="data.giobd1" data-size="7")
                             option(value='', disabled) Từ giờ
-                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}"){{option.name}}
+                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}") {{option.name}}
                           input#gbdnh.form-control.sb.typeahead(type='hidden', name='giobd1', value='{{data.giobd1}}')
 
                           select.form-control.sb.fixWTime.nya-selectpicker(ng-model="data.giokt1" data-size="7")
                             option(value='', disabled) Đến giờ
-                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}"){{option.name}}
+                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}") {{option.name}}
                           input#gktnh.form-control.sb.typeahead(type='hidden', name='giokt1', value='{{data.giokt1}}')
 
                         input.form-control.sb.btn.btn-danger(id='submitnh1' type='submit', value='Tìm kiếm')
@@ -260,11 +260,11 @@ html(lang='en')
                       .form-group
                           select.form-control.sb.fixwquan.nya-selectpicker(ng-model="data.quan" data-size="7")
                             option(value='', disabled) Chọn Quận
-                            option(ng-repeat="quan in data.danhsachquan" value="{{quan}}"){{quan}}
+                            option(ng-repeat="quan in data.danhsachquan" value="{{quan}}") {{quan}}
                           input#quandh.form-control.sb.typeahead(type='hidden', name='quan', value='{{data.quan}}')
 
                           select.form-control.sb.fixwdichvu.nya-selectpicker(ng-model="data.dichvu" multiple data-size="7")
-                            option(ng-repeat="dichvu in data.danhsachdichvu" value="{{dichvu.ten}}"){{dichvu.ten}}
+                            option(ng-repeat="dichvu in data.danhsachdichvu" value="{{dichvu.ten}}") {{dichvu.ten}}
                           input#dichvudh.form-control.sb.typeahead(type='hidden', name='dichvu', value='{{data.dichvu}}')
 
                           input.form-control.sb.dpindex.fixWTime(type='text', name='ngaybd', placeholder='Từ ngày', readonly='readonly', autocomplete='off')
@@ -273,12 +273,12 @@ html(lang='en')
                       .form-group
                           select.form-control.sb.fixWTime.nya-selectpicker(ng-model="data.giobd1" data-size="7")
                             option(value='', disabled) Từ giờ
-                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}"){{option.name}}
+                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}") {{option.name}}
                           input#gbddh.form-control.sb.typeahead(type='hidden', name='giobd1', value='{{data.giobd1}}')
 
                           select.form-control.sb.fixWTime.nya-selectpicker(ng-model="data.giokt1" data-size="7")
                             option(value='', disabled) Đến giờ
-                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}"){{option.name}}
+                            option(ng-repeat="option in data.availableOptions" value="{{option.id}}") {{option.name}}
                           input#gktdh.form-control.sb.typeahead(type='hidden', name='giokt1', value='{{data.giokt1}}')
 
                         input.form-control.sb.btn.btn-danger(id='submitdh1' type='submit', value='Tìm kiếm')

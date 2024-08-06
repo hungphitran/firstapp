@@ -644,6 +644,7 @@
 	    	}
 	    }
 	    service.filter_dichvu = function(sotruongs, data){
+			console.log(sotruongs)
 	    	for(i=0; i<sotruongs.length; i++){
 	    		var index = data.mang_tieuchi.indexOf(sotruongs[i]);
 				if (index !== -1) {
@@ -1039,7 +1040,7 @@
 		    // return deferred.promise;
 
 			try{
-				const response=$http.post('http://localhost:3000/xacthuc',thongtinkh)
+				const response=$http.post('http://localhost/xacthuc',thongtinkh)
 				console.log('xac nhan tra ve: ',response)
 				return response;
 			}
@@ -2685,8 +2686,7 @@
 			});
 		}
 		$scope.DangNhap = function(kieudangnhap){
-			khachhangFactory.xacthucThongTin(
-				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung)
+			khachhangFactory.xacthucThongTin($scope.khachhang.sdt, $scope.maxacnhan.nguoidung)
 				.then(function(data){
 					console.log('data dang nhap: ',data)
 					if(data.data == 'true'){
@@ -2696,7 +2696,8 @@
 						$scope.thongbaomaxacnhan = 'Mã xác nhận không đúng';
 						return;
 					}
-			})
+				})
+				.catch(err=>console.error(err))
 			
 		}
 		$scope.DangXuat = function(){

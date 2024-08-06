@@ -12,10 +12,10 @@ var saveNewImg = function(_name){
     var deferred = Q.defer();
     var imgdata = JSON.stringify({
         ten: _name,
-        url: 'http://procleaner.vn/hinhanh/blog/'+_name
+        url: 'https://webapi-9lho.onrender.com/api/hinhanh/blog/'+_name
     });
     request({
-      uri: 'http://procleaner.vn:4444/api/blogimg',
+      uri: 'https://webapi-9lho.onrender.com/api/blogimg',
       method: "POST",
       headers: {
         'Content-Type': 'application/json',

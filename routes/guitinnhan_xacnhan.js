@@ -167,7 +167,8 @@ router.post('/',function(req,res){
           else {
             console.log(xacnhan_callback2);
             maxacnhan = xacnhan_callback2.maxacnhan;
-            guiTinNhan(req.body.sdt, maxacnhan).then(function(){
+            guiTinNhan(req.body.sdt, maxacnhan)
+            .then(function(){
               res.status(200).end('done');
             })
             .catch((error)=>{
