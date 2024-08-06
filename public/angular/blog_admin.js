@@ -42,8 +42,8 @@
 	});
 	module.factory('blogFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
-		service.getBlogs = async function(){
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
+		service.getBlogs =  function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blog', { cache: false})
 		    //     .then(function(data) {
@@ -53,14 +53,14 @@
         	// 	});
 		    // return deferred.promise;
 			try{
-				await $http.get(api_url+'/blog')
+				 $http.get(api_url+'/blog')
 				.then(datas=>datas)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
 			}
 		}
-		service.getBlogById =async function(_id){
+		service.getBlogById = function(_id){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blog?_id='+_id, { cache: false})
 		    //     .success(function(data) {
@@ -70,14 +70,14 @@
         	// 	});
 		    // return deferred.promise;
 			try{
-				await $http.get(api_url+'/blog?_id='+_id)
+				 $http.get(api_url+'/blog?_id='+_id)
 				.then(datas=>datas)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
 			}
 		}
-		service.checkBlogUrl =async function(_url){
+		service.checkBlogUrl = function(_url){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blog?url='+_url, { cache: false})
 		    //     .success(function(data) {
@@ -88,14 +88,14 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blog?url='+_url)
+				 $http.get(api_url+'/blog?url='+_url)
 				.then(datas=>datas)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
 			}
 		}
-		service.checkBlogUrlEdit =async function(_url, _id){
+		service.checkBlogUrlEdit = function(_url, _id){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blog?url='+_url+'&_id__nin='+_id, { cache: false})
 		    //     .success(function(data) {
@@ -105,7 +105,7 @@
         	// 	});
 		    // return deferred.promise;
 			try{
-				await $http.get(api_url+'/blog?url='+_url+'&_id__nin='+_id)
+				 $http.get(api_url+'/blog?url='+_url+'&_id__nin='+_id)
 				.then(datas=>datas)
 			}catch (error) {
 				console.error('Error1:', error);
@@ -201,8 +201,8 @@
 	})
 	module.factory('blogImgFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
-		service.getBlogImgs = async function(){
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
+		service.getBlogImgs =  function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blogimg', { cache: false})
 		    //     .success(function(data) {
@@ -214,14 +214,14 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blogimg')
+				 $http.get(api_url+'/blogimg')
 				.then(datas=>datas)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
 			}
 		}
-		service.getBlogImgById = async function(_id){
+		service.getBlogImgById =  function(_id){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blogimg?_id='+_id, { cache: false})
 		    //     .success(function(data) {
@@ -231,7 +231,7 @@
         	// 	});
 		    // return deferred.promise;
 			try{
-				await $http.get(api_url+'/blogimg?_id='+_id)
+				 $http.get(api_url+'/blogimg?_id='+_id)
 				.then(datas=>datas)
 			}catch (error) {
 				console.error('Error1:', error);
@@ -254,8 +254,8 @@
 	})
 	module.factory('partnerFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
-		service.getPartners =async function(){
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
+		service.getPartners = function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/doitac', { cache: false})
 		    //     .success(function(data) {
@@ -267,7 +267,7 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/doitac')
+				 $http.get(api_url+'/doitac')
 				.then(datas=>datas)
 			}catch (error) {
 				console.error('Error1:', error);

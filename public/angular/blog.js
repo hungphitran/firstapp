@@ -33,7 +33,7 @@
     }]);
 	module.factory('blogFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
 		service.getNewestBlogs =async function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/blog?sort=-ngayviet&limit=4', { cache: false})

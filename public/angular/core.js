@@ -1,9 +1,9 @@
 ﻿(function(){
 	//search module
 	var module = angular.module('SearchModule',
-	 ['ngMaterial','ngMessages','ui.bootstrap','slickCarousel','ngRoute','ui.calendar','cancelable-q','ngCookies','nya.bootstrap.select']);
+	 ['ngMaterial','ngMessages','ui.bootstrap','slickCarousel','ngRoute','ui.calendar','cancelable-q','ngCookies','nya.bootstrap.select'])
 	
-	//var chitietModule = angular.module('ChitietModule', ['ngMaterial','ngMessages','slickCarousel','ngRoute']);
+	 //var chitietModule = angular.module('ChitietModule', ['ngMaterial','ngMessages','slickCarousel','ngRoute']);
 	module.config(function($mdThemingProvider, $locationProvider){
 		$mdThemingProvider.theme('default')
 			.primaryPalette('green');
@@ -13,9 +13,23 @@
         	reloadOnSearch: true
         });
 	});
+	module.config(function($routeProvider) {
+		$routeProvider
+			.when('', {
+				templateUrl: '',
+				controller: 'indexController'
+			})
+			.when('/about', {
+				templateUrl: 'about.html',
+				controller: 'AboutController'
+			})
+			.otherwise({
+				redirectTo: ''
+			});
+	});
 	module.factory('doitacFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
 		service.layDoiTac = async function(){
 			// var deferred = $q.defer();
 			// $http.get(api_url+'/doitac', { cache: false})
@@ -37,16 +51,8 @@
 	})
 	module.factory('ngvFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
 		service.layDanhSachNgvAll = async function(){
-			// var deferred = $q.defer();
-			// $http.get(api_url+'/nguoigiupviec?sort=hoten', { cache: false})
-		    //     .then(function(data) {
-		    //     	deferred.resolve(data);
-		    //     }).catch(function(data) {
-		    //         console.log('Error: ' + data);
-        	// 	});
-		    // return deferred.promise;
 			try {
 				const response = await $http.get(api_url + '/nguoigiupviec?sort=hoten', { cache: false });
 				return response.data;
@@ -260,9 +266,9 @@
 	    }
 	    return service;
 	});
-	module.factory('filterFactory', function($location, $mdDialog, $q, $http){
+	module.factory('filterFactory', function($location, $mdDialog, $q, $http,$window){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
 
 		var _kinhnghiems = [
 	    	{
@@ -509,6 +515,7 @@
 			      {id: 1200, name: '20:00 giờ'}
 			    ],
 	    };
+		
 	    service.getDSKinhNghiem = function(){
 	    	return _kinhnghiems;
 	    }
@@ -644,7 +651,7 @@
 	    	}
 	    }
 	    service.filter_dichvu = function(sotruongs, data){
-			console.log(sotruongs)
+			if(sotruongs==undefined) return false;
 	    	for(i=0; i<sotruongs.length; i++){
 	    		var index = data.mang_tieuchi.indexOf(sotruongs[i]);
 				if (index !== -1) {
@@ -667,20 +674,9 @@
 	});
 	module.factory('thanhtoanFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
 		//lưu khách hàng
 		service.timKhachHang = function(sdt){
-			// var deferred = $q.defer();
-			// var q = '?sdt=' + sdt;
-			// $http.get(api_url+'/khachhang'+q, { cache: false})
-		    //     .then(function(data) {
-		    //     	deferred.resolve(data);
-		    //     })
-		    //     .catch(function(data) {
-		    //         console.log('Error: ' + data);
-        	// });
-		    // return deferred.promise;
-
 			try {
 				const response = $http.get(api_url + '/khachhang'+'?sdt='+sdt, { cache: false });
 				console.log('lay khach hang = sdt: ',response);
@@ -699,17 +695,6 @@
 			    diachi: khachhang.diachi,
 			    email: "kocoemail",
 		 	});
-			// $http.post({url: api_url+'/khachhang',
-	        //     method: "POST",
-	        //     data: new_khachhang,
-	        //     headers: {'Content-Type': 'application/json'}
-	        // }).then(function (data, status, headers, config) {
-
-	        // 	deferred.resolve(data);
-	        //     }).catch(function (data, status, headers, config) {
-	        //         console.log('Error: ' + data);
-	        //     });
-	        // return deferred.promise;
 
 			try{
 				const response=$http.post(api_url+'/khachhang',new_khachhang)
@@ -726,14 +711,7 @@
 				'&giobatdau__lte=' + giokt +
 				'&gioketthuc__gte=' + giobd +
 				'&cmnd=' + cmnd;
-			// $http.get(api_url+'/lichlamviec'+q_ngv_trunglich, { cache: false})
-		    //     .then(function(data) {
-		    //     	deferred.resolve(data);
-		    //     })
-		    //     .catch(function(data) {
-		    //         console.log('Error: ' + data);
-        	// });
-	        // return deferred.promise;
+
 			try {
 				const response = await $http.get(api_url + '/lichlamviec'+ q_ngv_trunglich, { cache: false });
 				return response.data;
@@ -845,7 +823,7 @@
 	});
 	module.factory('khachhangFactory', function($http, $q){
 		var service = {};
-		var api_url = 'https://webapi-9lho.onrender.com/api';
+		var api_url = 'https://webapi-f8hh.onrender.com/api';
 		var _khachhang = {
 			hoten: null,
 			sdt: null,
@@ -908,14 +886,6 @@
 		service.getYeuCauNh = async function(sdt){
 			// var deferred = $q.defer();
 			var q = '?sdtkhachhang=0' + sdt + '&loaiyeucau=Ngắn hạn';
-			// $http.get(api_url+'/yeucau'+q, { cache: false})
-		    //     .then(function(data) {
-		    //     	deferred.resolve(data);
-		    //     })
-		    //     .catch(function(data) {
-		    //         console.log('Error: ' + data);
-        	// });
-		    // return deferred.promise;
 			try {
 				const response = await $http.get(api_url + '/yeucau'+q, { cache: false });
 				return response.data;
@@ -927,14 +897,7 @@
 		service.getYeuCauDh =async function(sdt){
 			var deferred = $q.defer();
 			var q = '?sdtkhachhang=0' + sdt + '&loaiyeucau=Dài hạn';
-			// $http.get(api_url+'/yeucau'+q, { cache: false})
-		    //     .then(function(data) {
-		    //     	deferred.resolve(data);
-		    //     })
-		    //     .catch(function(data) {
-		    //         console.log('Error: ' + data);
-        	// });
-		    // return deferred.promise;
+
 			try {
 				const response = await $http.get(api_url + '/yeucau'+q, { cache: false });
 				return response.data;
@@ -946,14 +909,7 @@
 		service.getChiTietYeuCau =async function(id){
 			var deferred = $q.defer();
 			var q = '?idyeucau=' + id;
-			// $http.get(api_url+'/chitietyeucau'+q, { cache: false})
-		    //     .then(function(data) {
-		    //     	deferred.resolve(data);
-		    //     })
-		    //     .catch(function(data) {
-		    //         console.log('Error: ' + data);
-        	// });
-		    // return deferred.promise;
+
 			try {
 				const response = await $http.get(api_url + '/chitietyeucau'+q, { cache: false });
 				return response.data;
@@ -1030,14 +986,6 @@
 				sdt: sdtkhachhang,
 				maxacnhan: maxacnhan
 			}
-			// $http.post('http://localhost:3000/xacthuc', thongtinkh)
-		    //     .then(function(data) {
-			// 		console.log("core :", data);
-	        // 		deferred.resolve(data);
-		    //     }).catch(function(data) {
-		    //         console.log('Error: ' + data);
-        	// 	});
-		    // return deferred.promise;
 
 			try{
 				const response=$http.post('http://localhost/xacthuc',thongtinkh)
@@ -1110,6 +1058,34 @@
 		$scope.isSelected = ngvFactory.isSelected;
 		$scope.chon_ngv = ngvFactory.chon_ngv;
 		//-------------Lấy dữ liệu-----------------------------------
+		$scope.initData = function() {
+			filterFactory.getDSQuan().then(function(data) {
+			  $scope.quans = data;
+			});
+		  
+			filterFactory.getDSTieuChi().then(function(data) {
+			  $scope.tieuchis = data;
+			});
+		  
+			ngvFactory.layDanhSachNgvAll().then(function(data) {
+			  $scope.ngvs = data;
+			});
+		  };
+		  
+    // Theo dõi sự thay đổi của $location.path()
+    $scope.$watch(function() {
+        return $location.path();
+    }, function(newPath, oldPath) {
+        // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
+        if (newPath === oldPath) {
+            $scope.initData();
+        }
+    });
+
+    // Theo dõi sự kiện route reload
+    $scope.$on('$routeChangeSuccess', function() {
+        $scope.initData();
+    });
 		$scope.kinhnghiems = filterFactory.getDSKinhNghiem();
 		$scope.quans =[];
 		$scope.khuvuc = [];
@@ -1412,7 +1388,7 @@
 	    	var q_ngv_trunglich = '?ngaylam=' + $scope.doi_ngaysearch($scope.data.ngay) +
 				'&giobatdau__lte=' + $scope.data.giokt1 +
 				'&gioketthuc__gte=' + $scope.data.giobd1;
-			$http.get('https://webapi-9lho.onrender.com/api/lichlamviec'+q_ngv_trunglich, { cache: false})
+			$http.get('https://webapi-f8hh.onrender.com/api/lichlamviec'+q_ngv_trunglich, { cache: false})
 		        .then(function(data) {
 		        	if(data.length > 0){
 			            for(i=0; i<data.length; i++){
@@ -1432,7 +1408,7 @@
 			        		}
 			            }
 		        	}
-		            $http.get('https://webapi-9lho.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
+		            $http.get('https://webapi-f8hh.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
 				        .then(function(data) {
 				        	var trangthaiyc = thanhtoanFactory.getTrangThaiYeuCau($scope.tieuchis);
 				        	var mangdichvu = layDanhSachDichVu();
@@ -1687,6 +1663,34 @@
         		}
         	}
     	};
+		$scope.initData = function() {
+			filterFactory.getDSQuan().then(function(data) {
+			  $scope.quans = data;
+			});
+		  
+			filterFactory.getDSTieuChi().then(function(data) {
+			  $scope.tieuchis = data;
+			});
+		  
+			ngvFactory.layDanhSachNgvAll().then(function(data) {
+			  $scope.ngvs = data;
+			});
+		  };
+		  
+    // Theo dõi sự thay đổi của $location.path()
+    $scope.$watch(function() {
+        return $location.path();
+    }, function(newPath, oldPath) {
+        // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
+        if (newPath === oldPath) {
+            $scope.initData();
+        }
+    });
+
+    // Theo dõi sự kiện route reload
+    $scope.$on('$routeChangeSuccess', function() {
+        $scope.initData();
+    });
     	$scope.xemChiTietDh = function(ngv){
     		$scope.detailData.ngvDetail = null;
     		$timeout(function(){
@@ -2321,7 +2325,7 @@
 			    	);
 	    		}
 	    		else{
-	    			$http.get('https://webapi-9lho.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
+	    			$http.get('https://webapi-f8hh.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
 				        .then(function(data) {
 
 				        	var trangthaiyc = thanhtoanFactory.getTrangThaiYeuCau($scope.tieuchis);
@@ -3007,6 +3011,7 @@
 	}
 	});
 	module.controller('indexController', function(filterFactory, ngvFactory, $scope, $http, $log, $location, $mdDialog){
+		console.log(module.$routeProvider)
 		$scope.data = {
 			quan: $location.search().quan,
 			dichvu: [],
@@ -3047,10 +3052,34 @@
 			      {id: 1200, name: '20:00 giờ'}
 		    ],
 	    };
+		$scope.initData = function() {
+			filterFactory.getDSQuan().then(function(data) {
+			  $scope.quans = data;
+			});
+		  
+			filterFactory.getDSTieuChi().then(function(data) {
+			  $scope.tieuchis = data;
+			});
+		  
+			ngvFactory.layDanhSachNgvAll().then(function(data) {
+			  $scope.ngvs = data;
+			});
+		  };
+		  
+    // Theo dõi sự thay đổi của $location.path()
+    $scope.$watch(function() {
+        return $location.path();
+    }, function(newPath, oldPath) {
+        // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
+        if (newPath === oldPath) {
+            $scope.initData();
+        }
+    });
 
-		const factoryData= filterFactory.getDuLieuPage();
-		$scope.data.danhsachquan=factoryData.danhsachquan;
-		$scope.data.danhsachdichvu=factoryData.danhsachdichvu;
+    // Theo dõi sự kiện route reload
+    $scope.$on('$routeChangeSuccess', function() {
+        $scope.initData();
+    });
 
 
 	    for(i=0; i<$scope.data.availableOptions.length; i++){
@@ -3369,6 +3398,34 @@
 	            }
         	]
 		}
+		$scope.initData = function() {
+			filterFactory.getDSQuan().then(function(data) {
+			  $scope.quans = data;
+			});
+		  
+			filterFactory.getDSTieuChi().then(function(data) {
+			  $scope.tieuchis = data;
+			});
+		  
+			ngvFactory.layDanhSachNgvAll().then(function(data) {
+			  $scope.ngvs = data;
+			});
+		  };
+		  
+    // Theo dõi sự thay đổi của $location.path()
+    $scope.$watch(function() {
+        return $location.path();
+    }, function(newPath, oldPath) {
+        // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
+        if (newPath === oldPath) {
+            $scope.initData();
+        }
+    });
+
+    // Theo dõi sự kiện route reload
+    $scope.$on('$routeChangeSuccess', function() {
+        $scope.initData();
+    });
 		ngvFactory.layDanhSachNgvAll()
 		.then(function(data){
 			console.log('slick lay ngv: ',data)
@@ -3732,7 +3789,7 @@
 	    }
 	    var luu_yeucau_b2 = function(){
 	    	$scope.loading_yeucau = true;
-            $http.get('https://webapi-9lho.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
+            $http.get('https://webapi-f8hh.onrender.com/api/khachhang?sdt='+$scope.khachhang.sdt, { cache: false})
 		        .then(function(data) {
 		        	var trangthaiyc = thanhtoanFactory.getTrangThaiYeuCau($scope.tieuchis);
 		        	var mangdichvu = layDanhSachDichVu();

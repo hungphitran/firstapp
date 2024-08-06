@@ -20,17 +20,10 @@ function luuXacNhan(sdtkhachhang, callback){
     xacnhan.sdtkhachhang = sdtkhachhang;
     console.log('tin nhan luu : ', sdtkhachhang)
     xacnhan.save()
-    .then(function(err){
-        if(err){
-            callback(err);
-        }else{
-            callback(null, xacnhan);
-        }
-    })
+    .then(()=>{callback(null, xacnhan);})
     .catch(err=>console.error(err))
 }
 function timXacNhan(sdtkhachhang, callback){
-    console.log(sdtkhachhang)
     var query = tinnhanDB.findOne({'sdtkhachhang':sdtkhachhang});
     query.exec()
     .then(function(xacnhan){
@@ -43,7 +36,9 @@ function timXacNhan(sdtkhachhang, callback){
 function xoaXacNhan(sdtkhachhang){
     var query = tinnhanDB.findOne({'sdtkhachhang':sdtkhachhang}).deleteOne();
     console.log('remove otp')
-    query.exec();
+    query.exec()
+    .then(res=>res)
+    .catch(err=>console.error(err))
 }
 // Exports
 module.exports.luuXacNhan = luuXacNhan;
