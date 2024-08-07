@@ -3476,6 +3476,34 @@
 			      {id: 1200, name: '20:00 giờ'}
 		    ],
 	    };
+		$scope.initData = function() {
+			filterFactory.getDSQuan().then(function(data) {
+			  $scope.quans = data;
+			});
+		  
+			filterFactory.getDSTieuChi().then(function(data) {
+			  $scope.tieuchis = data;
+			});
+		  
+			ngvFactory.layDanhSachNgvAll().then(function(data) {
+			  $scope.ngvs = data;
+			});
+		  };
+		  
+    // Theo dõi sự thay đổi của $location.path()
+    $scope.$watch(function() {
+        console.log('route changing!!!');
+		return $location.path();
+    }, function(newPath, oldPath) {
+        // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
+        $scope.initData();
+    });
+
+    // Theo dõi sự kiện route reload
+    $scope.$on('$routeChangeSuccess', function() {
+        $scope.initData();
+    });
+
 	    $scope.maxacnhan = {
 	    	nguoidung: null
 	    };
@@ -3551,6 +3579,8 @@
 			
 		}
 		$scope.checkDichVuNgvDcChon = function(dichvu){
+			console.log('so truong: ',$scope.ngvDcChon.sotruong)
+			if($scope.ngvDcChon.sotruong==undefined) return true;
 			for(i=0; i<$scope.ngvDcChon.sotruong.length; i++){
 				if(dichvu == $scope.ngvDcChon.sotruong[i]) return false;
 			}
@@ -3608,6 +3638,7 @@
 			var promise1 = ngvFactory.layNgvTheoId(idngv).then(function(data){
 				$scope.ngvDcChon = data[0];
 			})
+			console.log($scope.ngvDcChon);
 			var promise2 = ngvFactory.layDanhSachNgvSub(idngv).then(function(data){
 				if(data.length == 1){
 					$scope.ngv_sub1 = data[0];

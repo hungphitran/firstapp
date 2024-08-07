@@ -13,7 +13,7 @@ block chitiet
         .row
             .col-md-4
               a(href='#')
-                img.img-responsive(ng-src='{{"https://procleanervn.onrender.com/public/images/ngv/" + ngvDcChon.hinhanh}}', alt='Ảnh đại diện')
+                img.img-responsive(ng-src='{{"https://procleanermanagement.onrender.com/public/images/ngv/" + ngvDcChon.hinhanh}}', alt='Ảnh đại diện')
               .rating
                 i.fa.fa-2x.fa-star.xanhnhat
                 i.fa.fa-2x.fa-star.xanhnhat
@@ -97,14 +97,14 @@ block chitiet
                   h1.md-display-2.center Giấy khám sức khỏe
                     slick.slicktest(settings='slickconfig', ng-if='loadingSlick')
                       div(ng-repeat='gksk in ngvDcChon.giaykhamsuckhoe')
-                        img.center.img-responsive(ng-src='{{"http://procleaner.vn:3000/public/images/ngv/" + gksk}}', alt='Giấy khám sức khỏe')
+                        img.center.img-responsive(ng-src='{{"https://procleanermanagement.onrender.com/public/images/ngv/" + gksk}}', alt='Giấy khám sức khỏe')
         hr
       .col-md-3.col-md-pull-9.content-left
         h4 Nhân viên tương đồng
         .row(ng-if='ngv_sub1!=null')
           .thumbnail.sm-img-left
             a.center.portfolio-box(ng-click='chuyenNgv(ngv_sub1._id)', ng-href='/nguoi_giup_viec')
-              img.img-responsive(ng-src='{{"http://procleaner.vn:3000/public/images/ngv/" + ngv_sub1.hinhanh}}', alt='Ảnh đại diện')
+              img.img-responsive(ng-src='{{"https://procleanermanagement.onrender.com/public/images/ngv/" + ngv_sub1.hinhanh}}', alt='Ảnh đại diện')
             .caption.center
               .row
                 .left.padleft
@@ -122,7 +122,7 @@ block chitiet
         .row(ng-if='ngv_sub2!=null')
           .thumbnail.sm-img-left
             a.center.portfolio-box(ng-click='chuyenNgv(ngv_sub2._id)', ng-href='/nguoi_giup_viec')
-              img.img-responsive(ng-src='{{"http://procleaner.vn:3000/public/images/ngv/" + ngv_sub2.hinhanh}}', alt='Ảnh đại diện')
+              img.img-responsive(ng-src='{{"https://procleanermanagement.onrender.com/public/images/ngv/" + ngv_sub2.hinhanh}}', alt='Ảnh đại diện')
             .caption.center
               .row
                 .left.padleft
@@ -261,7 +261,7 @@ block chitiet
                     p Danh sách nhân viên đã chọn.
                     md-divider
                     md-list-item
-                      img.md-avatar(alt='Ảnh đại diện', ng-src='{{"http://procleaner.vn:3000/public/images/ngv/" + ngvDcChon.hinhanh}}')
+                      img.md-avatar(alt='Ảnh đại diện', ng-src='{{"https://procleanermanagement.onrender.com/public/images/ngv/" + ngvDcChon.hinhanh}}')
                       p {{ngvDcChon.hoten}}
             div.modal-footer(ng-if='!loading_yeucau && !hoanthanh_thanhtoan_ct')
               button.marleft.btn.btn-danger.pull-right(type="submit", ng-disabled="formthanhtoan.$invalid || !checkThanhToan() || !checkDichVu()", ng-click='luu_yeucau()')
