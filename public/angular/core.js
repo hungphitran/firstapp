@@ -988,7 +988,7 @@
 			}
 
 			try{
-				const response=$http.post('http://localhost/xacthuc',thongtinkh)
+				const response=$http.post('https://procleanervn.onrender.com/xacthuc',thongtinkh)
 				console.log('xac nhan tra ve: ',response)
 				return response;
 			}
