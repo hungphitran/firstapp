@@ -665,7 +665,6 @@
 		service.timKhachHang = function(sdt){
 			try {
 				const response = $http.get(api_url + '/khachhang'+'?sdt='+sdt, { cache: false });
-				console.log('lay khach hang = sdt: ',response);
 				return response;
 			} catch (error) {
 				console.error('Error1:', error);
@@ -1060,7 +1059,6 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        console.log('route changing!!!');
 		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
@@ -1664,7 +1662,6 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        console.log('route changing!!!');
 		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
@@ -2658,7 +2655,6 @@
 					var expireDate = new Date();
   					expireDate.setDate(expireDate.getDate() + 1);
 					$cookies.put('khachhang', data[0].sdt, {'expires': expireDate});
-					console.log('cookies putting')
 					khachhangFactory.setKhachHang($scope.khachhang);
 					$scope.khachhang = khachhangFactory.getKhachHang();
 					$scope.loadingDangNhap = false;
@@ -3052,7 +3048,6 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        console.log('route changing!!!');
 		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
@@ -3397,7 +3392,6 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        console.log('route changing!!!');
 		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
@@ -3492,7 +3486,6 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        console.log('route changing!!!');
 		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
@@ -3579,8 +3572,7 @@
 			
 		}
 		$scope.checkDichVuNgvDcChon = function(dichvu){
-			console.log('so truong: ',$scope.ngvDcChon.sotruong)
-			if($scope.ngvDcChon.sotruong==undefined) return true;
+			if($scope.ngvDcChon==undefined) return true;
 			for(i=0; i<$scope.ngvDcChon.sotruong.length; i++){
 				if(dichvu == $scope.ngvDcChon.sotruong[i]) return false;
 			}
@@ -3635,8 +3627,9 @@
 			$scope.isThanhToan = false;
 		}
 		$scope.initData = function(){
-			var promise1 = ngvFactory.layNgvTheoId(idngv).then(function(data){
-				$scope.ngvDcChon = data[0];
+			var promise1 = ngvFactory.layNgvTheoId(idngv)
+			.then(function(data){
+				$scope.ngvDcChon = data.data[0];
 			})
 			console.log($scope.ngvDcChon);
 			var promise2 = ngvFactory.layDanhSachNgvSub(idngv).then(function(data){
@@ -3674,7 +3667,8 @@
 					});
 				}
 			});
-			$q.all([promise1, promise2, promise3]).then(function(){
+			$q.all([promise1, promise2, promise3])
+			.then(function(){
 				$scope.data.quan = $scope.ngvDcChon.diachi.quan;
 				$scope.loading = false;
 			})
