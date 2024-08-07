@@ -13,20 +13,6 @@
         	reloadOnSearch: true
         });
 	});
-	module.config(function($routeProvider) {
-		$routeProvider
-			.when('', {
-				templateUrl: '',
-				controller: 'indexController'
-			})
-			.when('/about', {
-				templateUrl: 'about.html',
-				controller: 'AboutController'
-			})
-			.otherwise({
-				redirectTo: ''
-			});
-	});
 	module.factory('doitacFactory', function($http, $q){
 		var service = {};
 		var api_url = 'https://webapi-f8hh.onrender.com/api';
@@ -1074,12 +1060,11 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        return $location.path();
+        console.log('route changing!!!');
+		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
-        if (newPath === oldPath) {
-            $scope.initData();
-        }
+        $scope.initData()
     });
 
     // Theo dõi sự kiện route reload
@@ -1679,12 +1664,11 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        return $location.path();
+        console.log('route changing!!!');
+		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
-        if (newPath === oldPath) {
-            $scope.initData();
-        }
+        $scope.initData()
     });
 
     // Theo dõi sự kiện route reload
@@ -3068,12 +3052,11 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        return $location.path();
+        console.log('route changing!!!');
+		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
-        if (newPath === oldPath) {
-            $scope.initData();
-        }
+        $scope.initData()
     });
 
     // Theo dõi sự kiện route reload
@@ -3414,12 +3397,11 @@
 		  
     // Theo dõi sự thay đổi của $location.path()
     $scope.$watch(function() {
-        return $location.path();
+        console.log('route changing!!!');
+		return $location.path();
     }, function(newPath, oldPath) {
         // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
-        if (newPath === oldPath) {
-            $scope.initData();
-        }
+        $scope.initData();
     });
 
     // Theo dõi sự kiện route reload
