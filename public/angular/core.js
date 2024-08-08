@@ -2990,7 +2990,7 @@
 		}
 	}
 	});
-	module.controller('indexController', function(filterFactory, ngvFactory, $scope, $http, $log, $location, $mdDialog){
+	module.controller('indexController', function(filterFactory, ngvFactory, $scope, $http, $log, $location, $mdDialog,$window){
 		console.log(module.$routeProvider)
 		$scope.data = {
 			quan: $location.search().quan,
@@ -3058,7 +3058,6 @@
     $scope.$on('$routeChangeSuccess', function() {
         $scope.initData();
     });
-
 
 	    for(i=0; i<$scope.data.availableOptions.length; i++){
 	    	if(Number($scope.data.giobd1) == $scope.data.availableOptions[i].id)
