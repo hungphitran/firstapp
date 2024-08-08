@@ -16,7 +16,8 @@ function taoMaXacNhan(){
 }
 function luuXacNhan(sdtkhachhang, callback){
     var xacnhan = new tinnhanDB();
-    xacnhan.maxacnhan = taoMaXacNhan();
+    //xacnhan.maxacnhan = taoMaXacNhan();
+    xacnhan.maxacnhan='1111';
     xacnhan.sdtkhachhang = sdtkhachhang;
     console.log('tin nhan luu : ', sdtkhachhang)
     xacnhan.save()

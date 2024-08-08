@@ -152,8 +152,7 @@ router.post('/',function(req,res){
       console.log(xacnhan_callback);
       if(xacnhan_callback != null){
         maxacnhan = xacnhan_callback.maxacnhan;
-        // guiTinNhan(req.body.sdt, maxacnhan)
-        guiTinNhan(req.body.sdt, '111111')
+        guiTinNhan(req.body.sdt, maxacnhan)
         .then(function(){
           console.log('gui tin nhan thanh cong toi so : ',req.body.sdt)
           res.status(200).end('done');
@@ -168,8 +167,7 @@ router.post('/',function(req,res){
           else {
             console.log(xacnhan_callback2);
             maxacnhan = xacnhan_callback2.maxacnhan;
-            //guiTinNhan(req.body.sdt, maxacnhan)
-            guiTinNhan(req.body.sdt, '11111')
+            guiTinNhan(req.body.sdt, maxacnhan)
             .then(function(){
               res.status(200).end('done');
             })

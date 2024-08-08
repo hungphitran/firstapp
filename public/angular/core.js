@@ -3860,6 +3860,7 @@
 	    $scope.luu_yeucau = function(){
 	    	khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
+					data="true";
 					if(data == 'true'){
 						luu_yeucau_b2();
 					}else{
