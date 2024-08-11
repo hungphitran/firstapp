@@ -107,7 +107,7 @@
 		}
 		service.getBlogsFromPage =async function(_page){
 			// var deferred = $q.defer();
-			// var blogsSkip = (_page-1)*5;
+			var blogsSkip = (_page-1)*5;
 			// $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip, { cache: false})
 		    //     .then(function(data) {
 		    //     	deferred.resolve(data);
@@ -126,7 +126,7 @@
 		}
 		service.getBlogsFromPageByTag =async function(_page, _tag){
 			// var deferred = $q.defer();
-			// var blogsSkip = (_page-1)*5;
+			var blogsSkip = (_page-1)*5;
 			// $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip+'&tags__in='+_tag, { cache: false})
 		    //     .then(function(data) {
 		    //     	deferred.resolve(data);
@@ -180,7 +180,7 @@
 		}
 		service.getBlogsBySearch =async function(_searchString, _page){
 			// var deferred = $q.defer();
-			// var blogsSkip = (_page-1)*5;
+			var blogsSkip = (_page-1)*5;
 			// $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip+'&noidung__regex=/'+_searchString+'/', { cache: false})
 		    //     .then(function(data) {
 		    //     	deferred.resolve(data);
@@ -239,7 +239,9 @@
 			}
 		}
 		$scope.initTag = function(){
-			blogFactory.getBlogTags().then(function(data){
+			blogFactory.getBlogTags()
+			.then(function(data){
+				if(data==undefined) data=[];
 				countTags(data);
 				makeObjMostUsedTag();
 			})

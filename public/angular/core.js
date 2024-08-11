@@ -2506,7 +2506,6 @@
 				return true;
 		}
 		$scope.$watch('khachhang.sdt', function(newVal, oldVal){
-			console.log('watch sdt :', newVal.toString().length)
 			if(newVal == null) return;
 			if(newVal.toString().length < 10) {
 				$scope.thongbaosdt.dangky = 'Số điện thoại phải từ 10 số';
