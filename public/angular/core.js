@@ -13,6 +13,7 @@
         	reloadOnSearch: true
         });
 	});
+
 	module.factory('doitacFactory', function($http, $q){
 		var service = {};
 		var api_url = 'https://webapi-f8hh.onrender.com/api';
@@ -2990,7 +2991,6 @@
 	}
 	});
 	module.controller('indexController', function(filterFactory, ngvFactory, $scope, $http, $log, $location, $mdDialog,$window){
-		console.log(module.$routeProvider)
 		$scope.data = {
 			quan: $location.search().quan,
 			dichvu: [],

@@ -44,8 +44,8 @@
         	// 	});
 		    // return deferred.promise;
 			try{
-				await $http.get(api_url+'/blog?sort=-ngayviet&limit=4')
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?sort=-ngayviet&limit=4')
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -62,8 +62,8 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blog?select=tags')
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?select=tags')
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -80,8 +80,8 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blog?select=_id')
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?select=_id')
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -98,8 +98,8 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blog?select=_id&tags__in'+_tag)
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?select=_id&tags__in'+_tag)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -117,8 +117,8 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip)
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -136,8 +136,8 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip+'&tags__in'+_tag)
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip+'&tags__in'+_tag)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -154,8 +154,8 @@
 		    // return deferred.promise;
 
 			try{
-				await $http.get(api_url+'/blog?url='+_url)
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?url='+_url)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -171,8 +171,8 @@
         	// 	});
 		    // return deferred.promise;
 			try{
-				await $http.get(api_url+'/blog?sort=-ngayviet&noidung__regex=/'+_searchString+'/')
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?sort=-ngayviet&noidung__regex=/'+_searchString+'/')
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -189,8 +189,8 @@
         	// 	});
 		    // return deferred.promise;
 			try{
-				await $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip+'&noidung__regex=/'+_searchString+'/')
-				.then(datas=>datas)
+				return await $http.get(api_url+'/blog?sort=-ngayviet&limit=5&skip='+blogsSkip+'&noidung__regex=/'+_searchString+'/')
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -240,16 +240,21 @@
 		}
 		$scope.initTag = function(){
 			blogFactory.getBlogTags()
-			.then(function(data){
-				if(data==undefined) data=[];
+			.then(data=>{
 				countTags(data);
 				makeObjMostUsedTag();
 			})
+			.catch(err=>console.error(err));
+					
+			
 		}
 		$scope.initNewestBlogs = function(){
-			blogFactory.getNewestBlogs().then(function(data){
+			blogFactory.getNewestBlogs()
+			.then(data=>{
+				console.log("newestblog:", data);
 				$scope.NewestBlogs = data;
 			})
+			.catch(err=>console.error(err))
 		}
 		$scope.$on('$routeChangeSuccess', function(event, current) {
 			$scope.PageToView = 1;

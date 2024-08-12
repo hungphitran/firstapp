@@ -54,7 +54,7 @@
 		    // return deferred.promise;
 			try{
 				 $http.get(api_url+'/blog')
-				.then(datas=>datas)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -71,7 +71,7 @@
 		    // return deferred.promise;
 			try{
 				 $http.get(api_url+'/blog?_id='+_id)
-				.then(datas=>datas)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -89,7 +89,7 @@
 
 			try{
 				 $http.get(api_url+'/blog?url='+_url)
-				.then(datas=>datas)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -106,7 +106,7 @@
 		    // return deferred.promise;
 			try{
 				 $http.get(api_url+'/blog?url='+_url+'&_id__nin='+_id)
-				.then(datas=>datas)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -215,7 +215,7 @@
 
 			try{
 				 $http.get(api_url+'/blogimg')
-				.then(datas=>datas)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -232,7 +232,7 @@
 		    // return deferred.promise;
 			try{
 				 $http.get(api_url+'/blogimg?_id='+_id)
-				.then(datas=>datas)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
@@ -268,7 +268,7 @@
 
 			try{
 				 $http.get(api_url+'/doitac')
-				.then(datas=>datas)
+				.then(datas=>datas.data)
 			}catch (error) {
 				console.error('Error1:', error);
 				throw error;
