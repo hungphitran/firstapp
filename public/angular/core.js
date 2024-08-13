@@ -978,7 +978,7 @@
 			try{
 				const response=$http.post('https://procleanervn.onrender.com/xacthuc',thongtinkh)
 				console.log('xac nhan tra ve: ',response)
-				return response;
+				return response.data;
 			}
 			catch(err){
 				console.error('khong the xac thuc',err);
@@ -1447,6 +1447,7 @@
 	    $scope.luu_yeucau = function(){
 	    	khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
+					
 					if(data == 'true'){
 						luu_yeucau_b2();
 					}else{
@@ -2505,7 +2506,7 @@
 			khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
 					console.log('thong tin xac thuc :' , data)
-					if(data.data == 'true'){
+					if(data == 'true'){
 						$scope.thongbaomaxacnhan = '';
 						$scope.loadingDangKy = true;
 						thanhtoanFactory.timKhachHang($scope.khachhang.sdt).then(function(data){
@@ -2640,7 +2641,7 @@
 			khachhangFactory.xacthucThongTin($scope.khachhang.sdt, $scope.maxacnhan.nguoidung)
 				.then(function(data){
 					console.log('data dang nhap: ',data)
-					if(data.data == 'true'){
+					if(data == 'true'){
 						$scope.loadingDangNhap = true;
 						DangNhapb2(kieudangnhap);
 					}else{
@@ -3826,7 +3827,6 @@
 	    $scope.luu_yeucau = function(){
 	    	khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
-					data="true";
 					if(data == 'true'){
 						luu_yeucau_b2();
 					}else{

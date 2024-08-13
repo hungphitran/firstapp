@@ -15,7 +15,7 @@ var luuLichLamViec = function(cmnd, ngay, giobd, giokt, sdtkh, idctyc){
       khachhang: sdtkh
     });
   request({
-      uri: 'http://procleaner.vn:4444/api/lichlamviec',
+      uri: 'https://webapi-f8hh.onrender.com/api/lichlamviec',
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ var luuYeuCau = function(ngaybd, ngaykt, chiphi, hotenkhachhang, sdtkhachhang, d
       noidat: "web_khachhang"
   });
   request({
-      uri: 'http://procleaner.vn:4444/api/yeucau',
+      uri: 'https://webapi-f8hh.onrender.com/api/yeucau',
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ var luuChiTietYeuCau = function(cmnd, ngay, giobd, giokt, yeucauid, sogiongoaigi
       chiphingoaigio: chiphingoaigio
     });
     request({
-      uri: 'http://procleaner.vn:4444/api/chitietyeucau',
+      uri: 'https://webapi-f8hh.onrender.com/api/chitietyeucau',
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
