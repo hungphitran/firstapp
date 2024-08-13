@@ -73,7 +73,8 @@
 				            	x += data[i].cmnd;
 				            	if(i != data.length-1) x += ',';
 				            }
-				            x += '&diachi.quan__in=' + chuoiquan;
+				            if(chuoiquan.length) x += '&diachi.quan__in=' + chuoiquan;
+							else x += '&diachi.quan__nin=';
 				            x += '&sort=-sonamkinhnghiem';
 				        	$http.get(api_url+'/nguoigiupviec'+x, { cache: false})
 						        .then(function(data) {
@@ -117,8 +118,9 @@
 				            	x += data[i].cmnd;
 				            	if(i != data.length-1) x += ',';
 				            }
-				        	x += '&diachi.quan__in=' + chuoiquan;
-			        		x += '&sotruong__in=';
+				        	if(chuoiquan.length) x += '&diachi.quan__in=' + chuoiquan;
+							else x += '&diachi.quan__nin=';
+			        		x += '&sotruong__nin=';
 			        		for(i=0; i<dichvu.length; i++){
 				        		x+= dichvu[i];
 				        		if(i != dichvu.length-1) x += ',';
@@ -1044,38 +1046,13 @@
 		$scope.isSelected = ngvFactory.isSelected;
 		$scope.chon_ngv = ngvFactory.chon_ngv;
 		//-------------Lấy dữ liệu-----------------------------------
-		$scope.initData = function() {
-			filterFactory.getDSQuan().then(function(data) {
-			  $scope.quans = data;
-			});
-		  
-			filterFactory.getDSTieuChi().then(function(data) {
-			  $scope.tieuchis = data;
-			});
-		  
-			ngvFactory.layDanhSachNgvAll().then(function(data) {
-			  $scope.ngvs = data;
-			});
-		  };
-		  
-    // Theo dõi sự thay đổi của $location.path()
-    $scope.$watch(function() {
-		return $location.path();
-    }, function(newPath, oldPath) {
-        // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
-        $scope.initData()
-    });
-
-    // Theo dõi sự kiện route reload
-    $scope.$on('$routeChangeSuccess', function() {
-        $scope.initData();
-    });
 		$scope.kinhnghiems = filterFactory.getDSKinhNghiem();
 		$scope.quans =[];
 		$scope.khuvuc = [];
 		$scope.data = filterFactory.getDuLieuPage();
 		$scope.tieuchis = [];
 		$scope.initDataFirstTime = function(){
+
 			var q1 = filterFactory.getDSQuan().then(function(data){
 				$scope.khuvuc = filterFactory.taoDanhSachKhuVuc(data);
 				for(i=0; i<data.length; i++){
@@ -1151,7 +1128,8 @@
 									 $scope.data.giobd1,
 									 $scope.data.giokt1,
 									 chuoiquan).then(function(data){
-									 	$scope.ngvs = data;
+									 	$scope.ngvs = data.data;
+										console.log('lay danh sach ngvs: ',data)
 									 	getNgvPhuHop(data, $scope.data.quan);
 									 	$scope.loading = false;
 									 });
@@ -1212,6 +1190,7 @@
 		//--------------end watch-----------------------
 	    
 	    var getNgvPhuHop = function(ngvs, quan){
+			console.log("ngvs phu hop: ", ngvs)
 	    	if(ngvs ==  null) return;
 	    	for(i=0; i<ngvs.length; i++){
 	    		var in_arr = false;
@@ -1661,18 +1640,6 @@
 			});
 		  };
 		  
-    // Theo dõi sự thay đổi của $location.path()
-    $scope.$watch(function() {
-		return $location.path();
-    }, function(newPath, oldPath) {
-        // Nếu tuyến đường thay đổi hoặc trang được làm mới, gọi hàm initData
-        $scope.initData()
-    });
-
-    // Theo dõi sự kiện route reload
-    $scope.$on('$routeChangeSuccess', function() {
-        $scope.initData();
-    });
     	$scope.xemChiTietDh = function(ngv){
     		$scope.detailData.ngvDetail = null;
     		$timeout(function(){
