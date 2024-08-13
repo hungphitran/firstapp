@@ -120,7 +120,9 @@
 				            }
 				        	if(chuoiquan.length) x += '&diachi.quan__in=' + chuoiquan;
 							else x += '&diachi.quan__nin=';
-			        		x += '&sotruong__nin=';
+			        		if(dichvu.length==0)x += '&sotruong__nin=';
+							else x += '&sotruong__in='
+
 			        		for(i=0; i<dichvu.length; i++){
 				        		x+= dichvu[i];
 				        		if(i != dichvu.length-1) x += ',';
