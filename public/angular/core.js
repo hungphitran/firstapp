@@ -1446,7 +1446,7 @@
 	    	khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung)
 				.then(function(data){
-					if(data.datâtaaâdas == 'true'){
+					if(data.data == 'true'){
 						luu_yeucau_b2();
 					}else{
 						$mdDialog.show(
