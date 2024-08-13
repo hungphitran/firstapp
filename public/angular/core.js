@@ -1829,6 +1829,7 @@
 						 dichvu);
 					var cancelp = cancelableQ.wrap(promise);
 					cancelp.then(function(data){
+						data=data.data;
 						 	if(data.length>0){
 						 		var _dsNgvPhuHop = [];
 						 		var soluong = 1;
