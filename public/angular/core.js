@@ -968,8 +968,6 @@
 	        return deferred.promise;
 		}
 		service.xacthucThongTin = function(sdtkhachhang, maxacnhan){
-			console.log("xacthuc: ",sdtkhachhang,maxacnhan)
-			//var deferred = $q.defer();
 			var thongtinkh = {
 				sdt: sdtkhachhang,
 				maxacnhan: maxacnhan
@@ -978,7 +976,7 @@
 			try{
 				const response=$http.post('https://procleanervn.onrender.com/xacthuc',thongtinkh)
 				console.log('xac nhan tra ve: ',response)
-				return response.data;
+				return response;
 			}
 			catch(err){
 				console.error('khong the xac thuc',err);
@@ -1446,8 +1444,8 @@
 	    }
 	    $scope.luu_yeucau = function(){
 	    	khachhangFactory.xacthucThongTin(
-				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
-					
+				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung)
+				.then(function(data){
 					if(data == 'true'){
 						luu_yeucau_b2();
 					}else{
