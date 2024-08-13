@@ -1446,7 +1446,7 @@
 	    	khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung)
 				.then(function(data){
-					if(data == 'true'){
+					if(data.datâtaaâdas == 'true'){
 						luu_yeucau_b2();
 					}else{
 						$mdDialog.show(
@@ -2353,7 +2353,7 @@
 	    $scope.luu_yeucau = function(){
 	    	khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
-					if(data == 'true'){
+					if(data.data == 'true'){
 						luu_yeucau_b2();
 					}else{
 						$mdDialog.show(
@@ -2504,7 +2504,7 @@
 			khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
 					console.log('thong tin xac thuc :' , data)
-					if(data == 'true'){
+					if(data.data == 'true'){
 						$scope.thongbaomaxacnhan = '';
 						$scope.loadingDangKy = true;
 						thanhtoanFactory.timKhachHang($scope.khachhang.sdt).then(function(data){
@@ -2639,7 +2639,7 @@
 			khachhangFactory.xacthucThongTin($scope.khachhang.sdt, $scope.maxacnhan.nguoidung)
 				.then(function(data){
 					console.log('data dang nhap: ',data)
-					if(data == 'true'){
+					if(data.data == 'true'){
 						$scope.loadingDangNhap = true;
 						DangNhapb2(kieudangnhap);
 					}else{
@@ -3825,7 +3825,7 @@
 	    $scope.luu_yeucau = function(){
 	    	khachhangFactory.xacthucThongTin(
 				$scope.khachhang.sdt, $scope.maxacnhan.nguoidung).then(function(data){
-					if(data == 'true'){
+					if(data.data == 'true'){
 						luu_yeucau_b2();
 					}else{
 						$mdDialog.show(
